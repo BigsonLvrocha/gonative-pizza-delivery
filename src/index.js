@@ -7,14 +7,16 @@
  */
 
 import React from 'react';
-import { Text, View } from 'react-native';
 import './config/DevTools';
 import './config/Reactotron';
+import { Provider } from 'react-redux';
+import Login from './pages/Login';
+import store from './store/index';
 
 const App = () => (
-  <View>
-    <Text>Olá mundo</Text>
-  </View>
+  <Provider store={store}>
+    <Login />
+  </Provider>
 );
 
 export default App;
