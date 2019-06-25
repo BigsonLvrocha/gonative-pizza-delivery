@@ -4,6 +4,7 @@ export const Types = {
   FETCH_LOGGED_USER_REQUEST: 'session/FETCH_LOGGED_USER_REQUEST',
   FETCH_LOGGED_USER_SUCCESS: 'session/FETCH_LOGGED_USER_SUCCESS',
   FETCH_LOGGED_USER_FAILURE: 'session/FETCH_LOGGED_USER_FAILURE',
+  SESSION_CLEAR_ERROR: 'session/CLEAR_ERROR',
 };
 
 // reducer
@@ -42,6 +43,11 @@ export default function session(state = INITIAL_STATE, { type, payload }) {
         error: payload.error,
         loading: false,
       };
+    case Types.SESSION_CLEAR_ERROR:
+      return {
+        ...state,
+        error: false,
+      };
     default:
       return state;
   }
@@ -51,8 +57,12 @@ export const Creators = {
   initialLoggedUserRequest: () => ({
     type: Types.INITIAL_LOGGED_USER_REQUEST,
   }),
-  fetchLoggedUserRequest: () => ({
+  fetchLoggedUserRequest: (email, password) => ({
     type: Types.FETCH_LOGGED_USER_REQUEST,
+    payload: {
+      email,
+      password,
+    },
   }),
   fetchLoggedUserSuccess: (data, token) => ({
     type: Types.FETCH_LOGGED_USER_SUCCESS,
@@ -66,5 +76,8 @@ export const Creators = {
     payload: {
       error,
     },
+  }),
+  clearSessionErrors: () => ({
+    type: Types.SESSION_CLEAR_ERROR,
   }),
 };

@@ -1,6 +1,10 @@
 /* eslint-disable global-require */
 import React, { Component } from 'react';
-
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Creators as SessionActions } from '~/store/ducks/session';
+import { ActivityIndicator } from 'react-native';
+import PropTypes from 'prop-types';
 import {
   Container,
   BackgroundImage,
@@ -10,6 +14,7 @@ import {
   LogoPizza,
   CreateAccountButton,
   CreateAccountButtonText,
+  ErrorText,
 } from './styles';
 
 class Login extends Component {
@@ -18,8 +23,31 @@ class Login extends Component {
     password: '',
   };
 
+  static propTypes = {
+    isLoading: PropTypes.bool.isRequired,
+    fetchLoggedUserRequest: PropTypes.func.isRequired,
+    clearSessionErrors: PropTypes.func.isRequired,
+    error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  };
+
+  static defaultProps = {
+    error: false,
+  };
+
+  componentDidMount() {
+    const { clearSessionErrors } = this.props;
+    clearSessionErrors();
+  }
+
+  handleLoginPress = () => {
+    const { email, password } = this.state;
+    const { fetchLoggedUserRequest } = this.props;
+    fetchLoggedUserRequest(email, password);
+  };
+
   render() {
     const { email, password } = this.state;
+    const { isLoading, error } = this.props;
 
     return (
       <BackgroundImage source={require('../../../assets/Images/fundo.jpg')}>
@@ -36,8 +64,13 @@ class Login extends Component {
             placeholder="Senha secreta"
             secureTextEntry
           />
-          <LoginButton>
-            <LoginButtonText>Entrar</LoginButtonText>
+          {!!error && <ErrorText>{error}</ErrorText>}
+          <LoginButton onPress={this.handleLoginPress}>
+            {isLoading ? (
+              <ActivityIndicator size="small" />
+            ) : (
+              <LoginButtonText>Entrar</LoginButtonText>
+            )}
           </LoginButton>
           <CreateAccountButton>
             <CreateAccountButtonText>Criar conta gratuita</CreateAccountButtonText>
@@ -48,4 +81,14 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  isLoading: state.session.loading,
+  error: state.session.error,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(SessionActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Login);

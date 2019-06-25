@@ -59,3 +59,12 @@ export const CreateAccountButtonText = styled.Text`
   letter-spacing: 0;
   text-align: center;
 `;
+
+export const ErrorText = styled.Text`
+  font-family: Helvetica-Bold;
+  font-size: 15px;
+  color: ${colors.danger};
+  letter-spacing: 0;
+  text-align: center;
+  margin-top: ${metrics.baseMargin};
+`;
