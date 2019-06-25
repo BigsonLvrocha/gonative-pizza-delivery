@@ -56,7 +56,7 @@ class Signup extends Component {
 
   handleToLoginButtonPress = () => {
     const { navigation } = this.props;
-    navigation.goBack();
+    navigation.navigate('Login');
   };
 
   render() {

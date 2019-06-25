@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects';
 import { AppApi } from '~/services/api';
-import { goBack } from '~/services/navigation';
+import { navigate } from '~/services/navigation';
 import { Creators as SignupSession } from '~/store/ducks/signup';
 
 export function* createUserRequest({
@@ -15,7 +15,7 @@ export function* createUserRequest({
       password,
       password_confirmation: passwordConfirmation,
     });
-    goBack();
+    navigate('Login');
   } catch (e) {
     yield put(SignupSession.createUserFailure('Não foi possível criar o usuário'));
   }
