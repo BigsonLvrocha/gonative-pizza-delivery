@@ -28,6 +28,9 @@ class Login extends Component {
     fetchLoggedUserRequest: PropTypes.func.isRequired,
     clearSessionErrors: PropTypes.func.isRequired,
     error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   static defaultProps = {
@@ -43,6 +46,11 @@ class Login extends Component {
     const { email, password } = this.state;
     const { fetchLoggedUserRequest } = this.props;
     fetchLoggedUserRequest(email, password);
+  };
+
+  handleCreateAccountPress = () => {
+    const { navigation } = this.props;
+    navigation.navigate('Signup');
   };
 
   render() {
@@ -72,7 +80,7 @@ class Login extends Component {
               <LoginButtonText>Entrar</LoginButtonText>
             )}
           </LoginButton>
-          <CreateAccountButton>
+          <CreateAccountButton onPress={this.handleCreateAccountPress}>
             <CreateAccountButtonText>Criar conta gratuita</CreateAccountButtonText>
           </CreateAccountButton>
         </Container>
