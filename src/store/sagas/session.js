@@ -26,6 +26,8 @@ export function* fetchLoggedUser(token) {
 }
 
 export function* initialUserLoggedRequest() {
+  // yield call(AsyncStorage.removeItem, 'pizzaria/token');
+
   const loggedUserToken = yield call(AsyncStorage.getItem, 'pizzaria/token');
   if (loggedUserToken === null) {
     yield put(SessionActions.fetchLoggedUserFailure(false));

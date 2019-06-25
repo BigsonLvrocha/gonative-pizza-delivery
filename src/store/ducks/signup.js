@@ -1,7 +1,7 @@
 // types
 export const Types = {
   CREATE_USER_REQUEST: 'signup/CREATE_USER_REQUEST',
-  CREATE_USER_FAILURE: 'signup/CREATE_USER_REQUEST',
+  CREATE_USER_FAILURE: 'signup/CREATE_USER_FAILURE',
   CREATE_USER_SUCCESS: 'signup/CREATE_USER_SUCCESS',
   SIGNUP_CLEAR_ERRORS: 'signup/CLEAR_ERRORS',
 };
@@ -43,10 +43,10 @@ export default function (state = INITIAL_STATE, { type, payload }) {
 
 // creators
 export const Creators = {
-  createUserRequest: (name, email, password, passwordConfirmation) => ({
+  createUserRequest: (username, email, password, passwordConfirmation) => ({
     type: Types.CREATE_USER_REQUEST,
     payload: {
-      name,
+      username,
       email,
       password,
       passwordConfirmation,

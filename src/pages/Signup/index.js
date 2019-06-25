@@ -82,11 +82,13 @@ class Signup extends Component {
             value={password}
             onChangeText={text => this.setState({ password: text })}
             placeholder="Sua senha secreta"
+            secureTextEntry
           />
           <TextInput
             value={passwordConfirmation}
             onChangeText={text => this.setState({ passwordConfirmation: text })}
             placeholder="Confirme sua senha"
+            secureTextEntry
           />
           {!!error && <ErrorText>{error}</ErrorText>}
           <SignupButton onPress={this.handleSignupButtonPress}>
