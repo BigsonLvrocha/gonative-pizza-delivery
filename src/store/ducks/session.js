@@ -13,10 +13,17 @@ const INITIAL_STATE = {
   loggedUserToken: null,
   userChecked: false,
   error: false,
+  loading: false,
 };
 
 export default function session(state = INITIAL_STATE, { type, payload }) {
   switch (type) {
+    case Types.INITIAL_LOGGED_USER_REQUEST:
+    case Types.FETCH_LOGGED_USER_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
     case Types.FETCH_LOGGED_USER_SUCCESS:
       return {
         ...state,
@@ -24,6 +31,7 @@ export default function session(state = INITIAL_STATE, { type, payload }) {
         loggedUserToken: payload.token,
         userChecked: true,
         error: false,
+        loading: false,
       };
     case Types.FETCH_LOGGED_USER_FAILURE:
       return {
@@ -32,6 +40,7 @@ export default function session(state = INITIAL_STATE, { type, payload }) {
         loggedUserToken: null,
         userChecked: true,
         error: payload.error,
+        loading: false,
       };
     default:
       return state;
@@ -39,7 +48,7 @@ export default function session(state = INITIAL_STATE, { type, payload }) {
 }
 
 export const Creators = {
-  intialLoggedUserRequest: () => ({
+  initialLoggedUserRequest: () => ({
     type: Types.INITIAL_LOGGED_USER_REQUEST,
   }),
   fetchLoggedUserRequest: () => ({
