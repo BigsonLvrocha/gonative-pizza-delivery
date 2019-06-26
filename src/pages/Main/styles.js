@@ -6,13 +6,13 @@ export const Container = styled.View`
   flex-direction: column;
   align-items: stretch;
   flex: 1;
-  padding: ${getStatusBarHeight()}px ${metrics.basePadding}px;
+  padding: ${getStatusBarHeight()}px 0;
 `;
 
 export const HeaderContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin: ${metrics.basePadding}px 0;
+  margin: ${metrics.basePadding}px ${metrics.basePadding}px;
 `;
 
 export const Title = styled.Text`
@@ -24,7 +24,9 @@ export const Title = styled.Text`
   font-weight: bold;
 `;
 
-export const ListContainer = styled.View``;
+export const ListContainer = styled.View`
+  flex: 1;
+`;
 
 export const ItemText = styled.Text`
   font-family: Helvetica;
