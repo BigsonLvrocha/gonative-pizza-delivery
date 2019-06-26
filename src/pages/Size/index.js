@@ -14,7 +14,7 @@ const Size = ({ navigation }) => (
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icon name="chevron-left" size={20} color={colors.white} />
         </TouchableOpacity>
-        <PageTitle>Selecione um tipo</PageTitle>
+        <PageTitle>Selecione um tamanho</PageTitle>
       </HeaderContainer>
     </Container>
   </Layout>
