@@ -5,12 +5,14 @@ import * as ProductSagas from './product';
 import * as TypeSagas from './type';
 import * as SizeSagas from './size';
 import * as CepSagas from './cep';
+import * as CartSagas from './cart';
 import { Types as SessionTypes } from '~/store/ducks/session';
 import { Types as SignupTypes } from '~/store/ducks/signup';
 import { Types as ProductTypes } from '~/store/ducks/product';
 import { Types as TypeTypes } from '~/store/ducks/type';
 import { Types as SizeTypes } from '~/store/ducks/size';
 import { Types as CepTypes } from '~/store/ducks/cep';
+import { Types as CartTypes } from '~/store/ducks/cart';
 
 export default function* rootSaga() {
   return yield all([
@@ -21,5 +23,6 @@ export default function* rootSaga() {
     takeLatest(TypeTypes.FETCH_TYPES_REQUEST, TypeSagas.fetchTypeRequest),
     takeLatest(SizeTypes.FETCH_SIZES_REQUEST, SizeSagas.fetchSizesRequest),
     takeLatest(CepTypes.FETCH_CEP_REQUEST, CepSagas.fetchCepRequest),
+    takeLatest(CartTypes.PLACE_ORDER_REQUEST, CartSagas.placeOrderRequest),
   ]);
 }
