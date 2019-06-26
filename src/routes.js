@@ -2,6 +2,7 @@ import { createAppContainer, createStackNavigator } from 'react-navigation';
 import Login from '~/pages/Login';
 import Main from '~/pages/Main';
 import Signup from '~/pages/Signup';
+import Type from '~/pages/Type';
 
 export default userLogged => createAppContainer(
   createStackNavigator(
@@ -9,6 +10,7 @@ export default userLogged => createAppContainer(
       Login,
       Main,
       Signup,
+      Type,
     },
     {
       defaultNavigationOptions: {

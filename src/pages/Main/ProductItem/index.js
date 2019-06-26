@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types';
+import { withNavigation } from 'react-navigation';
 import { colors } from '~/styles';
 import {
   Container,
@@ -12,8 +13,8 @@ import {
   TimeText,
 } from './styles';
 
-const ProductItem = ({ item, last }) => (
-  <Container last={last}>
+const ProductItem = ({ item, last, navigation }) => (
+  <Container last={last} onPress={() => navigation.navigate('Type', { item: item.id })}>
     <ProductImage
       source={{
         uri: item.file.url,
@@ -38,8 +39,12 @@ ProductItem.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     estimated: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
   last: PropTypes.bool.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default ProductItem;
+export default withNavigation(ProductItem);
