@@ -10,6 +10,7 @@ import {
 } from './styles';
 import CartFooter from './CartFooter';
 import CartItem from './CartItem';
+import CartEmpty from './CartEmpty';
 
 const Cart = ({ total, navigation, items }) => (
   <Layout>
@@ -26,6 +27,7 @@ const Cart = ({ total, navigation, items }) => (
         keyExtractor={item => String(item.id)}
         renderItem={({ item }) => <CartItem item={item.item} id={item.id} />}
         ListFooterComponent={() => <CartFooter />}
+        ListEmptyComponent={() => <CartEmpty />}
       />
     </Container>
   </Layout>
