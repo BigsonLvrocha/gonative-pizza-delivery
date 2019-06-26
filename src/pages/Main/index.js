@@ -26,6 +26,9 @@ class Main extends Component {
       data: PropTypes.array,
     }).isRequired,
     fetchProductsRequest: PropTypes.func.isRequired,
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   componentDidMount() {
@@ -36,6 +39,7 @@ class Main extends Component {
   render() {
     const {
       product: { data, isLoading, error },
+      navigation,
     } = this.props;
     return (
       <Layout>
@@ -45,7 +49,7 @@ class Main extends Component {
               <Icon name="history" size={24} color={colors.white} />
             </TouchableOpacity>
             <Title>Pizzaria Don Juan</Title>
-            <CartButton>
+            <CartButton onPress={() => navigation.navigate('Cart')}>
               <Icon name="shopping" size={24} color={colors.white} />
               <CartNotificationBadge />
             </CartButton>
