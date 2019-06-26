@@ -56,19 +56,25 @@ class Order extends Component {
     }
   };
 
+  handleLength5InCep = (text) => {
+    const { cep } = this.state;
+    const { clearResult } = this.props;
+    if (cep.length < 5) {
+      this.setState({ cep: `${text}-` });
+    } else {
+      this.setState({
+        cep: text.substring(0, text.length - 1),
+      });
+    }
+    clearResult();
+  };
+
   handleCepInput = (text) => {
     const { clearResult, fetchCepRequest } = this.props;
-    const { cep } = this.state;
     if (Number.isNaN(parseInt(text[text.length - 1], 10))) {
       this.handleNanInCep(text);
     } else if (text.length === 5) {
-      if (cep.length < 5) {
-        this.setState({ cep: `${text}-` });
-      } else {
-        this.setState({
-          cep: text.substring(0, text.length - 1),
-        });
-      }
+      this.handleLength5InCep(text);
     } else if (text.length === 9) {
       this.setState({ cep: text });
       fetchCepRequest(text);
