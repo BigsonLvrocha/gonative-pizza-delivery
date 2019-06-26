@@ -9,6 +9,7 @@ import {
   Container, HeaderContainer, Title, PriceTag,
 } from './styles';
 import CartFooter from './CartFooter';
+import CartItem from './CartItem';
 
 const Cart = ({ total, navigation, items }) => (
   <Layout>
@@ -23,7 +24,7 @@ const Cart = ({ total, navigation, items }) => (
       <FlatList
         data={items}
         keyExtractor={item => String(item.id)}
-        renderItem={({ item }) => <Text>{item.item.productType.cart_name}</Text>}
+        renderItem={({ item }) => <CartItem item={item.item} />}
         ListFooterComponent={() => <CartFooter />}
       />
     </Container>
