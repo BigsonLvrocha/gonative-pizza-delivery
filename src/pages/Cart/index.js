@@ -30,21 +30,23 @@ const Cart = ({ total, navigation, items }) => (
         data={items}
         keyExtractor={item => String(item.id)}
         renderItem={({ item }) => <Text>{item.item.productType.cart_name}</Text>}
+        ListFooterComponent={() => (
+          <ActionsContainer>
+            <AddCartButton onPress={() => navigation.navigate('Main')}>
+              <Icon name="cart-plus" color={colors.darker} size={20} />
+            </AddCartButton>
+            <PlaceOrderButton>
+              <PlaceOrderText>REALIZAR PEDIDO</PlaceOrderText>
+              <Icon
+                name="chevron-right"
+                size={20}
+                color={colors.white}
+                style={{ textAlign: 'center' }}
+              />
+            </PlaceOrderButton>
+          </ActionsContainer>
+        )}
       />
-      <ActionsContainer>
-        <AddCartButton onPress={() => navigation.navigate('Main')}>
-          <Icon name="cart-plus" color={colors.darker} size={20} />
-        </AddCartButton>
-        <PlaceOrderButton>
-          <PlaceOrderText>REALIZAR PEDIDO</PlaceOrderText>
-          <Icon
-            name="chevron-right"
-            size={20}
-            color={colors.white}
-            style={{ textAlign: 'center' }}
-          />
-        </PlaceOrderButton>
-      </ActionsContainer>
     </Container>
   </Layout>
 );
