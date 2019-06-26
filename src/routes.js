@@ -6,6 +6,7 @@ import Type from '~/pages/Type';
 import Size from '~/pages/Size';
 import Cart from '~/pages/Cart';
 import Order from '~/pages/Order';
+import Profile from '~/pages/Profile';
 
 export default userLogged => createAppContainer(
   createStackNavigator(
@@ -17,6 +18,7 @@ export default userLogged => createAppContainer(
       Size,
       Cart,
       Order,
+      Profile,
     },
     {
       defaultNavigationOptions: {
