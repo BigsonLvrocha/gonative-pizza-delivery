@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Creators as CepActions } from '~/store/ducks/cep';
+import { Creators as CartActions } from '~/store/ducks/cart';
 import Layout from '~/components/layouts/MenuLayout';
 
 import {
@@ -42,6 +43,7 @@ class Order extends Component {
     street: PropTypes.string.isRequired,
     cepIsLoading: PropTypes.bool.isRequired,
     cepError: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+    placeOrderRequest: PropTypes.func.isRequired,
   };
 
   handleNanInCep = (text) => {
@@ -102,6 +104,12 @@ class Order extends Component {
     });
   };
 
+  handleSubmit = () => {
+    const { observations, cep, number } = this.state;
+    const { bairro, street, placeOrderRequest } = this.props;
+    placeOrderRequest(cep, street, number, bairro, observations);
+  };
+
   render() {
     const {
       total, navigation, bairro, street, cepIsLoading, cepError,
@@ -147,7 +155,7 @@ class Order extends Component {
             {cepError && <ErrorText>{cepError}</ErrorText>}
             {cepIsLoading && <ActivityIndicator size="large" />}
 
-            <PlaceOrderButton disabled={number === ''}>
+            <PlaceOrderButton disabled={number === ''} onPress={this.handleSubmit}>
               <PlaceOrderText>FINALIZAR PEDIDO</PlaceOrderText>
               <Icon name="chevron-right" size={20} />
             </PlaceOrderButton>
@@ -166,7 +174,13 @@ const mapStateToProps = state => ({
   cepError: state.cep.error,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(CepActions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    ...CartActions,
+    ...CepActions,
+  },
+  dispatch,
+);
 
 export default connect(
   mapStateToProps,
