@@ -32,7 +32,7 @@ const Cart = ({ total, navigation, items }) => (
         renderItem={({ item }) => <Text>{item.item.productType.cart_name}</Text>}
       />
       <ActionsContainer>
-        <AddCartButton>
+        <AddCartButton onPress={() => navigation.navigate('Main')}>
           <Icon name="cart-plus" color={colors.darker} size={20} />
         </AddCartButton>
         <PlaceOrderButton>
@@ -53,6 +53,7 @@ Cart.propTypes = {
   total: PropTypes.number.isRequired,
   navigation: PropTypes.shape({
     goBack: PropTypes.func.isRequired,
+    navigate: PropTypes.func.isRequired,
   }).isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
