@@ -24,6 +24,7 @@ export const Title = styled.Text`
   text-align: left;
   font-weight: bold;
   flex: 1;
+  margin-left: ${metrics.baseMargin}px;
 `;
 
 export const PriceTag = styled.Text`
