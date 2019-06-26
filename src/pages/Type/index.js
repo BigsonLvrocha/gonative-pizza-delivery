@@ -1,10 +1,13 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, FlatList } from 'react-native';
 import Layout from '~/components/layouts/MenuLayout';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types';
 import { colors } from '~/styles';
-import { Container, HeaderContainer, PageTitle } from './styles';
+import {
+  Container, HeaderContainer, PageTitle, ListContainer, ItemText,
+} from './styles';
+import data from './mockData';
 
 const Type = ({ navigation }) => (
   <Layout>
@@ -15,6 +18,14 @@ const Type = ({ navigation }) => (
         </TouchableOpacity>
         <PageTitle>Selecione um tipo</PageTitle>
       </HeaderContainer>
+      <ListContainer>
+        <FlatList
+          data={data}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => <ItemText>{item.menu_name}</ItemText>}
+          numColumns={2}
+        />
+      </ListContainer>
     </Container>
   </Layout>
 );

@@ -25,3 +25,19 @@ export const PageTitle = styled.Text`
   font-weight: bold;
   padding-left: ${metrics.baseMargin};
 `;
+
+export const ListContainer = styled.View`
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+`;
+
+export const ItemText = styled.Text`
+  font-family: Helvetica;
+  font-size: 18px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: center;
+  font-weight: bold;
+`;
