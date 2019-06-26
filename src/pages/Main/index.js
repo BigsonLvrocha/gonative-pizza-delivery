@@ -45,7 +45,7 @@ class Main extends Component {
       <Layout>
         <Container>
           <HeaderContainer>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
               <Icon name="history" size={24} color={colors.white} />
             </TouchableOpacity>
             <Title>Pizzaria Don Juan</Title>
