@@ -23,8 +23,8 @@ export const Container = styled.TouchableOpacity`
 `;
 
 export const Avatar = styled.Image`
-  width: ${metrics.screenWidth / 2 - 2 * metrics.basePadding - 2 * metrics.baseMargin};
-  height: ${metrics.screenWidth / 2 - 2 * metrics.basePadding - 2 * metrics.baseMargin};
+  width: ${metrics.screenWidth / 2 - 2 * metrics.basePadding - 1.5 * metrics.baseMargin};
+  height: ${metrics.screenWidth / 2 - 2 * metrics.basePadding - 1.5 * metrics.baseMargin};
   border-radius: ${metrics.baseRadius};
 `;
 
