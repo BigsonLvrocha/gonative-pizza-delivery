@@ -27,6 +27,7 @@ export default function reducer(state = INITIAL_STATE, { type, payload }) {
         ...state,
         isLoading: false,
         result: payload.result,
+        error: false,
       };
     case Types.FETCH_CEP_FAILURE:
       return {
