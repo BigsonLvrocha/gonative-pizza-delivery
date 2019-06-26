@@ -2,12 +2,15 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as CartActions } from '~/store/ducks/cart';
 import { colors } from '~/styles';
 import {
   Container, Avatar, TextContainer, Title, SizeName, PriceTag,
 } from './styles';
 
-const CartItem = ({ item }) => (
+const CartItem = ({ item, removeItem, id }) => (
   <Container>
     <Avatar
       source={{
@@ -24,7 +27,7 @@ const CartItem = ({ item }) => (
         })}
       </PriceTag>
     </TextContainer>
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => removeItem(id)}>
       <Icon name="delete-forever" color={colors.danger} size={20} />
     </TouchableOpacity>
   </Container>
@@ -45,6 +48,13 @@ CartItem.propTypes = {
       }),
     }),
   }).isRequired,
+  removeItem: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
-export default CartItem;
+const mapDispatchToProps = dispatch => bindActionCreators(CartActions, dispatch);
+
+export default connect(
+  () => ({}),
+  mapDispatchToProps,
+)(CartItem);

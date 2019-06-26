@@ -24,7 +24,7 @@ const Cart = ({ total, navigation, items }) => (
       <FlatList
         data={items}
         keyExtractor={item => String(item.id)}
-        renderItem={({ item }) => <CartItem item={item.item} />}
+        renderItem={({ item }) => <CartItem item={item.item} id={item.id} />}
         ListFooterComponent={() => <CartFooter />}
       />
     </Container>
