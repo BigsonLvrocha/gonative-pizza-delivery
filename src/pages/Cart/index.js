@@ -9,11 +9,11 @@ import {
 } from './styles';
 import { colors } from '~/styles';
 
-const Cart = ({ total }) => (
+const Cart = ({ total, navigation }) => (
   <Layout>
     <Container>
       <HeaderContainer>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icon name="chevron-left" size={24} color={colors.white} />
         </TouchableOpacity>
         <Title>Carrinho</Title>
@@ -25,6 +25,9 @@ const Cart = ({ total }) => (
 
 Cart.propTypes = {
   total: PropTypes.number.isRequired,
+  navigation: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = state => ({
