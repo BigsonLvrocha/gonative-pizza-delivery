@@ -37,4 +37,3 @@ export const Title = styled.Text`
   font-weight: bold;
   margin-top: ${metrics.baseMargin}px;
 `;
-
