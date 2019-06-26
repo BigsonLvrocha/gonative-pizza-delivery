@@ -1,12 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as CartActions } from '~/store/ducks/cart';
 import {
   Container, Avatar, Title, Price, AvatarContainer,
 } from './styles';
 
-const TypeItem = ({ item }) => (
-  <Container>
+const TypeItem = ({ item, addItem, navigation }) => (
+  <Container
+    onPress={() => {
+      addItem(item);
+      navigation.navigate('Cart');
+    }}
+  >
     <AvatarContainer scale={item.image_scale}>
       <Avatar source={{ uri: item.file.url }} scale={item.image_scale} />
     </AvatarContainer>
@@ -29,6 +37,12 @@ TypeItem.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
+  addItem: PropTypes.func.isRequired,
 };
 
-export default withNavigation(TypeItem);
+const mapDispatchToProps = dispatch => bindActionCreators(CartActions, dispatch);
+
+export default connect(
+  () => ({}),
+  mapDispatchToProps,
+)(withNavigation(TypeItem));
