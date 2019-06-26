@@ -37,4 +37,23 @@ export default [
       url: 'http://127.0.0.1:3333/file/8',
     },
   },
+  {
+    id: 3,
+    menu_name: 'Frango frito',
+    cart_name: 'Pizza frango frito',
+    product_id: 1,
+    file_id: 11,
+    created_at: '2019-06-26 00:06:52',
+    updated_at: '2019-06-26 00:08:16',
+    file: {
+      id: 11,
+      file: '1561518472580.png',
+      name: '3@3x.png',
+      type: 'image',
+      subtype: 'png',
+      created_at: '2019-06-26 00:07:52',
+      updated_at: '2019-06-26 00:07:52',
+      url: 'http://127.0.0.1:3333/file/11',
+    },
+  },
 ];
