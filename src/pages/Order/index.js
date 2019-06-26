@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { TouchableOpacity, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Creators as CepActions } from '~/store/ducks/cep';
 import { Creators as CartActions } from '~/store/ducks/cart';
 import Layout from '~/components/layouts/MenuLayout';
+import { colors } from '~/styles';
 
 import {
   Container,
@@ -23,7 +24,6 @@ import {
   NumberInput,
   ErrorText,
 } from './styles';
-import { colors } from '~/styles';
 
 class Order extends Component {
   state = {
@@ -44,6 +44,8 @@ class Order extends Component {
     cepIsLoading: PropTypes.bool.isRequired,
     cepError: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
     placeOrderRequest: PropTypes.func.isRequired,
+    cartIsLoading: PropTypes.bool.isRequired,
+    cartError: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
   };
 
   handleNanInCep = (text) => {
@@ -112,7 +114,14 @@ class Order extends Component {
 
   render() {
     const {
-      total, navigation, bairro, street, cepIsLoading, cepError,
+      total,
+      navigation,
+      bairro,
+      street,
+      cepIsLoading,
+      cepError,
+      cartIsLoading,
+      cartError,
     } = this.props;
     const { observations, cep, number } = this.state;
     return (
@@ -154,10 +163,17 @@ class Order extends Component {
           <ActionsContainer>
             {cepError && <ErrorText>{cepError}</ErrorText>}
             {cepIsLoading && <ActivityIndicator size="large" />}
+            {cartError && <ErrorText>{cartError}</ErrorText>}
 
             <PlaceOrderButton disabled={number === ''} onPress={this.handleSubmit}>
-              <PlaceOrderText>FINALIZAR PEDIDO</PlaceOrderText>
-              <Icon name="chevron-right" size={20} />
+              {cartIsLoading ? (
+                <ActivityIndicator size="small" color={colors.white} />
+              ) : (
+                <Fragment>
+                  <PlaceOrderText>FINALIZAR PEDIDO</PlaceOrderText>
+                  <Icon name="chevron-right" size={20} />
+                </Fragment>
+              )}
             </PlaceOrderButton>
           </ActionsContainer>
         </Container>
@@ -172,6 +188,8 @@ const mapStateToProps = state => ({
   street: state.cep.result === null ? '' : state.cep.result.logradouro,
   cepIsLoading: state.cep.isLoading,
   cepError: state.cep.error,
+  cartIsLoading: state.cart.isLoading,
+  cartError: state.cart.error,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(
