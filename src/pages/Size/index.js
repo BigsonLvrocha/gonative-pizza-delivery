@@ -1,13 +1,14 @@
 import React from 'react';
+import Layout from '~/components/layouts/MenuLayout';
 
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 
 // import { Container } from './styles';
 
 const Size = () => (
-  <View>
+  <Layout>
     <Text>hello from Size page</Text>
-  </View>
+  </Layout>
 );
 
 export default Size;
