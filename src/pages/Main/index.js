@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 import React, { Component } from 'react';
-import { FlatList, TouchableOpacity } from 'react-native';
+import { FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors } from '~/styles';
 import Layout from '~/components/layouts/MenuLayout';
@@ -9,14 +9,19 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { Creators as ProductActions } from '~/store/ducks/product';
 import {
-  Container, HeaderContainer, Title, CartButton, CartNotificationBadge,
+  Container,
+  HeaderContainer,
+  Title,
+  CartButton,
+  CartNotificationBadge,
+  ListContainer,
+  ErrorText,
 } from './styles';
 import ProductItem from './ProductItem';
-import data from './mockData';
 
 class Main extends Component {
   static propTypes = {
-    products: PropTypes.shape({
+    product: PropTypes.shape({
       isLoading: PropTypes.bool.isRequired,
       error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
       data: PropTypes.array,
@@ -30,6 +35,9 @@ class Main extends Component {
   }
 
   render() {
+    const {
+      product: { data, isLoading, error },
+    } = this.props;
     return (
       <Layout source={require('../../../assets/Images/header-background.png')}>
         <Container>
@@ -43,16 +51,23 @@ class Main extends Component {
               <CartNotificationBadge />
             </CartButton>
           </HeaderContainer>
-          <FlatList
-            style={{
-              flex: 1,
-            }}
-            data={data}
-            keyExtractor={item => String(item.id)}
-            renderItem={({ item, index }) => (
-              <ProductItem item={item} last={index === data.length - 1} />
+          {error && <ErrorText>{error}</ErrorText>}
+          <ListContainer>
+            {isLoading ? (
+              <ActivityIndicator size="large" color={colors.primary} />
+            ) : (
+              <FlatList
+                style={{
+                  flex: 1,
+                }}
+                data={data}
+                keyExtractor={item => String(item.id)}
+                renderItem={({ item, index }) => (
+                  <ProductItem item={item} last={index === data.length - 1} />
+                )}
+              />
             )}
-          />
+          </ListContainer>
         </Container>
       </Layout>
     );
@@ -60,7 +75,7 @@ class Main extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.products,
+  product: state.product,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(ProductActions, dispatch);

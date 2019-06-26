@@ -26,6 +26,8 @@ export const Title = styled.Text`
 
 export const ListContainer = styled.View`
   flex: 1;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const ItemText = styled.Text`
@@ -55,4 +57,13 @@ export const CartNotificationBadge = styled.View`
   width: 10px;
   border-radius: 5px;
   background-color: ${colors.yellow};
+`;
+
+export const ErrorText = styled.Text`
+  font-family: Helvetica-Bold;
+  font-size: 15px;
+  color: ${colors.danger};
+  letter-spacing: 0;
+  text-align: center;
+  margin-top: ${metrics.baseMargin};
 `;
