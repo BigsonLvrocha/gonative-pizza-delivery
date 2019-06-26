@@ -3,6 +3,7 @@ import Login from '~/pages/Login';
 import Main from '~/pages/Main';
 import Signup from '~/pages/Signup';
 import Type from '~/pages/Type';
+import Size from '~/pages/Size';
 
 export default userLogged => createAppContainer(
   createStackNavigator(
@@ -11,6 +12,7 @@ export default userLogged => createAppContainer(
       Main,
       Signup,
       Type,
+      Size,
     },
     {
       defaultNavigationOptions: {
