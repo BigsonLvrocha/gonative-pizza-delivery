@@ -4,17 +4,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Layout from '~/components/layouts/MenuLayout';
-import {
-  Container,
-  HeaderContainer,
-  Title,
-  PriceTag,
-  ActionsContainer,
-  AddCartButton,
-  PlaceOrderButton,
-  PlaceOrderText,
-} from './styles';
 import { colors } from '~/styles';
+import {
+  Container, HeaderContainer, Title, PriceTag,
+} from './styles';
+import CartFooter from './CartFooter';
 
 const Cart = ({ total, navigation, items }) => (
   <Layout>
@@ -30,22 +24,7 @@ const Cart = ({ total, navigation, items }) => (
         data={items}
         keyExtractor={item => String(item.id)}
         renderItem={({ item }) => <Text>{item.item.productType.cart_name}</Text>}
-        ListFooterComponent={() => (
-          <ActionsContainer>
-            <AddCartButton onPress={() => navigation.navigate('Main')}>
-              <Icon name="cart-plus" color={colors.darker} size={20} />
-            </AddCartButton>
-            <PlaceOrderButton>
-              <PlaceOrderText>REALIZAR PEDIDO</PlaceOrderText>
-              <Icon
-                name="chevron-right"
-                size={20}
-                color={colors.white}
-                style={{ textAlign: 'center' }}
-              />
-            </PlaceOrderButton>
-          </ActionsContainer>
-        )}
+        ListFooterComponent={() => <CartFooter />}
       />
     </Container>
   </Layout>
