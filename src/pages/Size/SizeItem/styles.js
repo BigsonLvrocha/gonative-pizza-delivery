@@ -22,9 +22,26 @@ export const Container = styled.TouchableOpacity`
   `)}
 `;
 
+export const AvatarContainer = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  ${({ scale }) => {
+    const totalSize = metrics.screenWidth / 2 - 2 * metrics.basePadding - 1.5 * metrics.baseMargin;
+    return `
+      padding: ${(totalSize * (1 - scale)) / 2}px;
+    `;
+  }}
+`;
+
 export const Avatar = styled.Image`
-  width: ${metrics.screenWidth / 2 - 2 * metrics.basePadding - 1.5 * metrics.baseMargin};
-  height: ${metrics.screenWidth / 2 - 2 * metrics.basePadding - 1.5 * metrics.baseMargin};
+  ${({ scale }) => {
+    const totalSize = metrics.screenWidth / 2 - 2 * metrics.basePadding - 1.5 * metrics.baseMargin;
+    return `
+      width: ${totalSize * scale}px;
+      height: ${totalSize * scale}px;
+    `;
+  }}
   border-radius: ${metrics.baseRadius};
 `;
 
@@ -36,4 +53,15 @@ export const Title = styled.Text`
   text-align: center;
   font-weight: bold;
   margin-top: ${metrics.baseMargin}px;
+`;
+
+export const Price = styled.Text`
+  opacity: 0.6;
+  font-family: Helvetica;
+  font-size: 16px;
+  color: #0b2031;
+  letter-spacing: 0;
+  text-align: center;
+  font-weight: bold;
+  margin-top: ${metrics.baseMargin / 2}px;
 `;
