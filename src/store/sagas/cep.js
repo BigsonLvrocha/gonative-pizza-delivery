@@ -5,7 +5,7 @@ import { Creators as CepActions } from '~/store/ducks/cep';
 export function* fetchCepRequest({ payload: { cep } }) {
   try {
     const { data } = yield call(ViaCepApi.get, `/ws/${cep}/json`);
-    if (data.error) {
+    if (data.erro) {
       yield put(CepActions.fetchCepError('O cep não foi encontrado'));
     } else {
       yield put(CepActions.fetchCepSuccess(data));
