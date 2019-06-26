@@ -38,11 +38,3 @@ export const Title = styled.Text`
   margin-top: ${metrics.baseMargin}px;
 `;
 
-export const ErrorText = styled.Text`
-  font-family: Helvetica-Bold;
-  font-size: 15px;
-  color: ${colors.danger};
-  letter-spacing: 0;
-  text-align: center;
-  margin-top: ${metrics.baseMargin};
-`;
