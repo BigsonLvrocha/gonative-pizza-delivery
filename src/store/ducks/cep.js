@@ -64,7 +64,7 @@ export const Creators = {
       error,
     },
   }),
-  crearResult: () => ({
+  clearResult: () => ({
     type: Types.CLEAR_RESULT,
   }),
 };
