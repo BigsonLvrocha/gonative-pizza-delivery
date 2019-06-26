@@ -46,10 +46,11 @@ export default function reducer(state = INITIAL_STATE, { type, payload }) {
 
 // action creators
 export const Creators = {
-  fetchSizesRequest: productId => ({
+  fetchSizesRequest: (productId, typeId) => ({
     type: Types.FETCH_SIZES_REQUEST,
     payload: {
       productId,
+      typeId,
     },
   }),
   fetchSizesSuccess: data => ({
