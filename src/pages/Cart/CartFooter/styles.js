@@ -10,7 +10,7 @@ export const Container = styled.View`
 `;
 
 export const AddCartButton = styled.TouchableOpacity`
-  background: ${colors.regular};
+  background: ${colors.light};
   align-content: center;
   justify-content: center;
   width: 32px;
