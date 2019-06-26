@@ -14,7 +14,7 @@ import {
 } from './styles';
 
 const ProductItem = ({ item, last, navigation }) => (
-  <Container last={last} onPress={() => navigation.navigate('Type', { item: item.id })}>
+  <Container last={last} onPress={() => navigation.navigate('Type', { productId: item.id })}>
     <ProductImage
       source={{
         uri: item.file.url,
