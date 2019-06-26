@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import React, { Component } from 'react';
 import { FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -39,7 +38,7 @@ class Main extends Component {
       product: { data, isLoading, error },
     } = this.props;
     return (
-      <Layout source={require('../../../assets/Images/header-background.png')}>
+      <Layout>
         <Container>
           <HeaderContainer>
             <TouchableOpacity>

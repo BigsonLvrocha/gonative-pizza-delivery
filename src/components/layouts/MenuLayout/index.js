@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import React, { Component } from 'react';
 import { Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
@@ -12,7 +13,6 @@ class MenuLayout extends Component {
   };
 
   static propTypes = {
-    source: PropTypes.number.isRequired,
     children: PropTypes.node.isRequired,
   };
 
@@ -26,10 +26,14 @@ class MenuLayout extends Component {
 
   render() {
     const { width, height } = this.state;
-    const { source, children } = this.props;
+    const { children } = this.props;
     return (
       <Container onLayout={this.handleLayoutChange}>
-        <Image source={source} width={width} height={height} />
+        <Image
+          source={require('../../../../assets/Images/header-background.png')}
+          width={width}
+          height={height}
+        />
         {children}
       </Container>
     );
