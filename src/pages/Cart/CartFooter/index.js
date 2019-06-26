@@ -7,12 +7,12 @@ import {
   Container, AddCartButton, PlaceOrderButton, PlaceOrderText,
 } from './styles';
 
-const CartFooter = ({ navigation }) => (
+const CartFooter = ({ navigation, isCartEmpty }) => (
   <Container>
     <AddCartButton onPress={() => navigation.navigate('Main')}>
       <Icon name="cart-plus" color={colors.darker} size={20} />
     </AddCartButton>
-    <PlaceOrderButton>
+    <PlaceOrderButton disabled={isCartEmpty} onPress={() => navigation.navigate('Order')}>
       <PlaceOrderText>REALIZAR PEDIDO</PlaceOrderText>
       <Icon name="chevron-right" size={20} color={colors.white} style={{ textAlign: 'center' }} />
     </PlaceOrderButton>
@@ -23,6 +23,7 @@ CartFooter.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
+  isCartEmpty: PropTypes.bool.isRequired,
 };
 
 export default withNavigation(CartFooter);

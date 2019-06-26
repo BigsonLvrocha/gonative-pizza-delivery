@@ -26,7 +26,7 @@ const Cart = ({ total, navigation, items }) => (
         data={items}
         keyExtractor={item => String(item.id)}
         renderItem={({ item }) => <CartItem item={item.item} id={item.id} />}
-        ListFooterComponent={() => <CartFooter />}
+        ListFooterComponent={() => <CartFooter isCartEmpty={items.length === 0} />}
         ListEmptyComponent={() => <CartEmpty />}
       />
     </Container>
