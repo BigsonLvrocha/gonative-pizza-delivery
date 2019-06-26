@@ -31,6 +31,7 @@ export const ListContainer = styled.View`
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
+  padding: ${metrics.baseMargin / 2}px;
 `;
 
 export const ItemText = styled.Text`

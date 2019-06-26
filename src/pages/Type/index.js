@@ -5,8 +5,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types';
 import { colors } from '~/styles';
 import {
-  Container, HeaderContainer, PageTitle, ListContainer, ItemText,
+  Container, HeaderContainer, PageTitle, ListContainer,
 } from './styles';
+import TypeItem from './TypeItem';
 import data from './mockData';
 
 const Type = ({ navigation }) => (
@@ -22,7 +23,7 @@ const Type = ({ navigation }) => (
         <FlatList
           data={data}
           keyExtractor={item => item.id}
-          renderItem={({ item }) => <ItemText>{item.menu_name}</ItemText>}
+          renderItem={({ item, index }) => <TypeItem item={item} last={index > data.length - 2} />}
           numColumns={2}
         />
       </ListContainer>
