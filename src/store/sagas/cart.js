@@ -30,6 +30,7 @@ export function* placeOrderRequest({
         },
       },
     );
+    yield put(CartActions.placeOrderSuccess());
     dispatch(
       StackActions.reset({
         index: 1,
