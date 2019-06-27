@@ -19,7 +19,7 @@ const Profile = ({ navigation }) => (
       </HeaderContainer>
       <FlatList
         data={data}
-        keyExtractor={item => item.id}
+        keyExtractor={item => String(item.id)}
         renderItem={({ item }) => <ProfileItem item={item} />}
       />
     </Container>

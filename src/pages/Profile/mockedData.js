@@ -1,17 +1,17 @@
 export default [
   {
-    id: 4,
+    id: 6,
     user_id: 3,
     observations: null,
     cep: '14800-040',
     street: 'Avenida Itápolis',
-    order_number: 1,
+    order_number: 3,
     district: 'Vila Bela Vista',
     number: 2167,
     status: 'placed',
     deleted_at: null,
-    created_at: '2019-06-26 19:58:38',
-    updated_at: '2019-06-26 19:58:38',
+    created_at: '2019-06-26 20:28:09',
+    updated_at: '2019-06-26 20:28:09',
     total: 29,
     sizes: [
       {
@@ -27,8 +27,8 @@ export default [
         image_scale: 0.5,
         pivot: {
           product_size_id: 1,
-          order_id: 4,
-          id: 5,
+          order_id: 6,
+          id: 7,
         },
       },
     ],
@@ -68,18 +68,18 @@ export default [
     ],
   },
   {
-    id: 6,
+    id: 4,
     user_id: 3,
     observations: null,
     cep: '14800-040',
     street: 'Avenida Itápolis',
-    order_number: 3,
+    order_number: 1,
     district: 'Vila Bela Vista',
     number: 2167,
     status: 'placed',
     deleted_at: null,
-    created_at: '2019-06-26 20:28:09',
-    updated_at: '2019-06-26 20:28:09',
+    created_at: '2019-06-26 19:58:38',
+    updated_at: '2019-06-26 19:58:38',
     total: 29,
     sizes: [
       {
@@ -95,8 +95,8 @@ export default [
         image_scale: 0.5,
         pivot: {
           product_size_id: 1,
-          order_id: 6,
-          id: 7,
+          order_id: 4,
+          id: 5,
         },
       },
     ],
