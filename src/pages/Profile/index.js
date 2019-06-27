@@ -1,10 +1,12 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types';
 import Layout from '~/components/layouts/MenuLayout';
-import { Container, PageTitle, HeaderContainer } from './styles';
 import { colors } from '~/styles';
+import { Container, PageTitle, HeaderContainer } from './styles';
+import data from './mockedData';
+import ProfileItem from './ProfileItem';
 
 const Profile = ({ navigation }) => (
   <Layout>
@@ -15,6 +17,11 @@ const Profile = ({ navigation }) => (
         </TouchableOpacity>
         <PageTitle>Meus pedidos</PageTitle>
       </HeaderContainer>
+      <FlatList
+        data={data}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => <ProfileItem item={item} />}
+      />
     </Container>
   </Layout>
 );
