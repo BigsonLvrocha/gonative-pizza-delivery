@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
-import { metrics } from '~/styles';
+import { metrics, colors } from '~/styles';
 
 export const Container = styled.View`
   flex-direction: column;
@@ -24,4 +24,13 @@ export const PageTitle = styled.Text`
   text-align: left;
   font-weight: bold;
   padding-left: ${metrics.baseMargin};
+`;
+
+export const ErrorText = styled.Text`
+  font-family: Helvetica-Bold;
+  font-size: 15px;
+  color: ${colors.danger};
+  letter-spacing: 0;
+  text-align: center;
+  margin-top: ${metrics.baseMargin};
 `;
