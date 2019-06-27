@@ -6,6 +6,7 @@ import type from './type';
 import size from './size';
 import cart from './cart';
 import cep from './cep';
+import order from './order';
 
 export default combineReducers({
   session,
@@ -15,4 +16,5 @@ export default combineReducers({
   size,
   cart,
   cep,
+  order,
 });
