@@ -4,10 +4,11 @@ import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as CartActions } from '~/store/ducks/cart';
-import {
-  Container, Avatar, Title, Price, AvatarContainer,
-} from './styles';
+import ImageContainer from '~/components/ImageContainer';
+import { Container, Title, Price } from './styles';
+import { metrics } from '~/styles';
 
+const total = metrics.screenWidth / 2 - 2 * metrics.basePadding - 1.5 * metrics.baseMargin;
 const TypeItem = ({ item, addItem, navigation }) => (
   <Container
     onPress={() => {
@@ -15,9 +16,13 @@ const TypeItem = ({ item, addItem, navigation }) => (
       navigation.navigate('Cart');
     }}
   >
-    <AvatarContainer scale={item.image_scale}>
-      <Avatar source={{ uri: item.file.url }} scale={item.image_scale} />
-    </AvatarContainer>
+    <ImageContainer
+      boxHeight={total}
+      boxWidth={total}
+      uri={item.file.url}
+      scale={item.image_scale}
+      id={item.id}
+    />
     <Title>{item.menu_name}</Title>
     <Price>{item.price.toLocaleString('pt-BR', { currency: 'BRL', style: 'currency' })}</Price>
   </Container>
