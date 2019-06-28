@@ -14,7 +14,7 @@ const CartItem = ({ item, removeItem, id }) => (
   <Container>
     <Avatar
       source={{
-        uri: item.cart_display_image === 'size' ? item.file.url : item.productType.file.url,
+        uri: item.cart_image_display === 'size' ? item.file.url : item.productType.file.url,
       }}
     />
     <TextContainer>
@@ -35,7 +35,7 @@ const CartItem = ({ item, removeItem, id }) => (
 
 CartItem.propTypes = {
   item: PropTypes.shape({
-    cart_display_image: PropTypes.oneOf(['type', 'size']),
+    cart_image_display: PropTypes.oneOf(['type', 'size']),
     cart_name: PropTypes.string,
     price: PropTypes.number,
     file: PropTypes.shape({
