@@ -11,7 +11,7 @@ export function* placeOrderRequest({
 }) {
   const { items } = yield select(state => state.cart);
   const { loggedUserToken } = yield select(state => state.session);
-  const sizes = items.map(item => item.item.id);
+  const sizes = items.map(item => ({ id: item.item.id, amount: item.amount }));
   try {
     yield call(
       AppApi.post,
