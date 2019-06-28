@@ -26,6 +26,7 @@ class Size extends Component {
       error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]).isRequired,
       isLoading: PropTypes.bool.isRequired,
     }).isRequired,
+    clearData: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -33,6 +34,11 @@ class Size extends Component {
     const productId = navigation.getParam('productId');
     const typeId = navigation.getParam('typeId');
     fetchSizesRequest(productId, typeId);
+  }
+
+  componentWillUnmount() {
+    const { clearData } = this.props;
+    clearData();
   }
 
   render() {

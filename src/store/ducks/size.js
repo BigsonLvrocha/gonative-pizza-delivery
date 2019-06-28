@@ -3,6 +3,7 @@ export const Types = {
   FETCH_SIZES_REQUEST: 'type/FETCH_SIZES_REQUEST',
   FETCH_SIZES_SUCCESS: 'type/FETCH_SIZES_SUCCESS',
   FETCH_SIZES_FAILURE: 'type/FETCH_SIZES_FAILURE',
+  CLEAR_DATA: 'type/CLEAR_DATA',
   CLEAR_ERRORS: 'type/CLEAR_ERRORS',
 };
 
@@ -19,6 +20,10 @@ export default function reducer(state = INITIAL_STATE, { type, payload }) {
       return {
         ...state,
         isLoading: true,
+      };
+    case Types.CLEAR_DATA: // importante para evitar vazamento de memória
+      return {
+        ...state,
         data: [],
       };
     case Types.FETCH_SIZES_SUCCESS:
@@ -67,5 +72,8 @@ export const Creators = {
   }),
   clearErrors: () => ({
     type: Types.CLEAR_ERRORS,
+  }),
+  clearData: () => ({
+    type: Types.CLEAR_DATA,
   }),
 };
