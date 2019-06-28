@@ -6,7 +6,7 @@ export const Container = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-around;
   background-color: ${colors.white};
-  border-radius: ${metrics.baseRadius}px;
+  border-radius: ${metrics.baseRadius * 2}px;
   padding: ${metrics.basePadding}px;
   shadow-color: #000;
   shadow-opacity: 0.8;
