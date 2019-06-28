@@ -1,5 +1,8 @@
+/* eslint-disable global-require */
 import React, { Component } from 'react';
-import { FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
+import {
+  FlatList, TouchableOpacity, ActivityIndicator, Image,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors } from '~/styles';
 import Layout from '~/components/layouts/MenuLayout';
@@ -50,7 +53,7 @@ class Main extends Component {
             </TouchableOpacity>
             <Title>Pizzaria Don Juan</Title>
             <CartButton onPress={() => navigation.navigate('Cart')}>
-              <Icon name="shopping" size={24} color={colors.white} />
+              <Image source={require('../../../assets/Images/bag.png')} color={colors.white} />
               <CartNotificationBadge />
             </CartButton>
           </HeaderContainer>
