@@ -24,7 +24,7 @@ const ProductItem = ({ item, last, navigation }) => (
       <Title>{item.name}</Title>
       <Description>{item.description}</Description>
       <TimeContainer>
-        <Icon color={colors.lighter} name="alarm" size={24} />
+        <Icon color={colors.light} name="alarm" size={24} />
         <TimeText>{item.estimated}</TimeText>
       </TimeContainer>
     </TextContainer>
