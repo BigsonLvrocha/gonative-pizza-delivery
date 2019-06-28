@@ -25,7 +25,7 @@ const Cart = ({ total, navigation, items }) => (
       <FlatList
         data={items}
         keyExtractor={item => String(item.id)}
-        renderItem={({ item }) => <CartItem item={item.item} id={item.id} />}
+        renderItem={({ item }) => <CartItem item={item.item} id={item.id} amount={item.amount} />}
         ListFooterComponent={() => <CartFooter isCartEmpty={items.length === 0} />}
         ListEmptyComponent={() => <CartEmpty />}
       />
@@ -49,7 +49,7 @@ Cart.propTypes = {
 
 const mapStateToProps = state => ({
   items: state.cart.items,
-  total: state.cart.items.reduce((acc, actual) => acc + actual.item.price, 0),
+  total: state.cart.items.reduce((acc, actual) => acc + actual.item.price * actual.amount, 0),
 });
 
 export default connect(mapStateToProps)(Cart);

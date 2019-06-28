@@ -11,7 +11,9 @@ import {
   Container, TextContainer, Title, SizeName, PriceTag,
 } from './styles';
 
-const CartItem = ({ item, removeItem, id }) => (
+const CartItem = ({
+  item, removeItem, id, amount,
+}) => (
   <Container>
     <ImageContainer
       boxWidth={78}
@@ -20,10 +22,10 @@ const CartItem = ({ item, removeItem, id }) => (
       borderRadius={metrics.baseRadius}
     />
     <TextContainer>
-      <Title>{item.productType.cart_name}</Title>
+      <Title>{`${amount > 1 ? `${amount}x` : ''}${item.productType.cart_name}`}</Title>
       <SizeName>{item.cart_name}</SizeName>
       <PriceTag>
-        {item.price.toLocaleString('pt-BR', {
+        {(item.price * amount).toLocaleString('pt-BR', {
           style: 'currency',
           currency: 'BRL',
         })}
@@ -52,6 +54,7 @@ CartItem.propTypes = {
   }).isRequired,
   removeItem: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
+  amount: PropTypes.number.isRequired,
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators(CartActions, dispatch);
