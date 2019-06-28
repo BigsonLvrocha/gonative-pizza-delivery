@@ -26,7 +26,7 @@ export default function reducer(state = INITIAL_STATE, { type, payload }) {
       return {
         ...state,
         data: [],
-      }
+      };
     case Types.FETCH_TYPES_SUCCESS:
       return {
         ...state,
@@ -75,5 +75,5 @@ export const Creators = {
   }),
   clearTypes: () => ({
     type: Types.CLEAR_TYPES,
-  })
+  }),
 };
