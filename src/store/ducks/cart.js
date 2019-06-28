@@ -16,8 +16,23 @@ const INITIAL_STATE = {
 };
 
 export default function reducer(state = INITIAL_STATE, { type, payload }) {
+  let initial;
   switch (type) {
     case Types.ADD_ITEM:
+      initial = state.items.find(item => item.item.id === payload.item.id);
+      if (initial) {
+        return {
+          ...state,
+          items: [
+            ...state.items.filter(item => item.item.id !== initial.item.id),
+            {
+              id: initial.id,
+              amount: initial.amount + 1,
+              item: initial.item,
+            },
+          ],
+        };
+      }
       return {
         ...state,
         items: [
@@ -26,14 +41,32 @@ export default function reducer(state = INITIAL_STATE, { type, payload }) {
             // encapsula em outro objeto para possibilitar a adição de
             // dois items iguais sem causar problema na id da lista
             id: Math.random(),
+            amount: 1,
             item: payload.item,
           },
         ],
       };
     case Types.REMOVE_ITEM:
+      initial = state.items.find(item => item.id === payload.id);
+      if (!initial) {
+        return state;
+      }
+      if (initial.amount === 1) {
+        return {
+          ...state,
+          items: state.items.filter(item => item.id !== payload.id),
+        };
+      }
       return {
         ...state,
-        items: state.items.filter(item => item.id !== payload.id),
+        items: [
+          ...state.items.filter(item => item.id !== payload.id),
+          {
+            id: payload.id,
+            amount: initial.amount - 1,
+            item: initial.item,
+          },
+        ],
       };
     case Types.CLEAR_CART:
       return {
