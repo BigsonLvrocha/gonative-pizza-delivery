@@ -4,18 +4,20 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import ImageContainer from '~/components/ImageContainer';
 import { Creators as CartActions } from '~/store/ducks/cart';
-import { colors } from '~/styles';
+import { colors, metrics } from '~/styles';
 import {
-  Container, Avatar, TextContainer, Title, SizeName, PriceTag,
+  Container, TextContainer, Title, SizeName, PriceTag,
 } from './styles';
 
 const CartItem = ({ item, removeItem, id }) => (
   <Container>
-    <Avatar
-      source={{
-        uri: item.cart_image_display === 'size' ? item.file.url : item.productType.file.url,
-      }}
+    <ImageContainer
+      boxWidth={78}
+      boxHeight={78}
+      uri={item.cart_image_display === 'size' ? item.file.url : item.productType.file.url}
+      borderRadius={metrics.baseRadius}
     />
     <TextContainer>
       <Title>{item.productType.cart_name}</Title>
