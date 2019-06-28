@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
-import { Container, Avatar, Title } from './styles';
+import ImageContainer from '~/components/ImageContainer';
+import { metrics } from '~/styles';
+import { Container, Title } from './styles';
 
 const TypeItem = ({ item, navigation }) => (
   <Container
@@ -11,7 +13,12 @@ const TypeItem = ({ item, navigation }) => (
     })
     }
   >
-    <Avatar source={{ uri: item.file.url }} />
+    <ImageContainer
+      uri={item.file.url}
+      boxWidth={metrics.screenWidth / 2 - 2 * metrics.basePadding - 1.5 * metrics.baseMargin}
+      boxHeight={metrics.screenWidth / 2 - 2 * metrics.basePadding - 1.5 * metrics.baseMargin}
+      borderRadius={metrics.baseRadius}
+    />
     <Title>{item.menu_name}</Title>
   </Container>
 );
