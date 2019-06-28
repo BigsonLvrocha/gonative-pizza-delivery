@@ -24,12 +24,18 @@ class Type extends Component {
       isLoading: PropTypes.bool.isRequired,
     }).isRequired,
     fetchTypesRequest: PropTypes.func.isRequired,
+    clearTypes: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
     const { navigation, fetchTypesRequest } = this.props;
     const productId = navigation.getParam('productId');
     fetchTypesRequest(productId);
+  }
+
+  componentWillUnmount() {
+    const { clearTypes } = this.props;
+    clearTypes();
   }
 
   render() {

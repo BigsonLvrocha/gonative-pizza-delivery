@@ -3,6 +3,7 @@ export const Types = {
   FETCH_TYPES_REQUEST: 'type/FETCH_TYPES_REQUEST',
   FETCH_TYPES_SUCCESS: 'type/FETCH_TYPES_SUCCESS',
   FETCH_TYPES_FAILURE: 'type/FETCH_TYPES_FAILURE',
+  CLEAR_TYPES: 'type/CLEAR_TYPES',
   CLEAR_ERRORS: 'type/CLEAR_ERRORS',
 };
 
@@ -21,6 +22,11 @@ export default function reducer(state = INITIAL_STATE, { type, payload }) {
         isLoading: true,
         data: [],
       };
+    case Types.CLEAR_TYPES:
+      return {
+        ...state,
+        data: [],
+      }
     case Types.FETCH_TYPES_SUCCESS:
       return {
         ...state,
@@ -67,4 +73,7 @@ export const Creators = {
   clearErrors: () => ({
     type: Types.CLEAR_ERRORS,
   }),
+  clearTypes: () => ({
+    type: Types.CLEAR_TYPES,
+  })
 };
