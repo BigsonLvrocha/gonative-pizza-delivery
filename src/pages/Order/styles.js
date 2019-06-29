@@ -39,8 +39,7 @@ export const PriceTag = styled.Text`
 export const TextInput = styled.TextInput`
   background: ${colors.white};
   border-radius: ${metrics.baseRadius}px;
-  height: 60px;
-  padding: ${metrics.basePadding}px;
+  padding: ${metrics.baseMargin}px ${metrics.basePadding}px;
   margin-top: ${metrics.baseMargin};
   margin-left: ${metrics.basePadding}px;
   margin-right: ${metrics.basePadding}px;
@@ -53,8 +52,7 @@ export const TextInput = styled.TextInput`
 export const StreetInput = styled.TextInput`
   background: ${colors.white};
   border-radius: ${metrics.baseRadius}px;
-  height: 60px;
-  padding: ${metrics.basePadding}px;
+  padding: ${metrics.baseMargin}px ${metrics.basePadding}px;
   margin-top: ${metrics.baseMargin};
   margin-left: ${metrics.basePadding}px;
   margin-right: ${metrics.baseMargin}px;
@@ -68,9 +66,8 @@ export const StreetInput = styled.TextInput`
 export const NumberInput = styled.TextInput`
   background: ${colors.white};
   border-radius: ${metrics.baseRadius}px;
-  height: 60px;
   width: 120px;
-  padding: ${metrics.basePadding}px;
+  padding: ${metrics.baseMargin}px ${metrics.basePadding}px;
   margin-top: ${metrics.baseMargin};
   margin-right: ${metrics.basePadding}px;
   shadow-color: #000;
@@ -82,8 +79,8 @@ export const NumberInput = styled.TextInput`
 export const ObsInput = styled.TextInput`
   background: ${colors.white};
   border-radius: ${metrics.baseRadius}px;
+  padding: ${metrics.baseMargin}px ${metrics.basePadding}px;
   height: 120px;
-  padding: ${metrics.basePadding}px;
   margin-top: ${metrics.baseMargin}px;
   margin-left: ${metrics.basePadding}px;
   margin-right: ${metrics.basePadding}px;
