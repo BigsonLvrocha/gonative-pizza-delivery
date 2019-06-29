@@ -20,9 +20,9 @@ export function* fetchLoggedUser(token) {
   } catch (e) {
     if (!!e.response && e.response.status === 401) {
       yield call(AsyncStorage.removeItem, 'pizzaria/token');
-      yield put(SessionActions.fetchLoggedUserFailure('There was a problem authenticating'));
+      yield put(SessionActions.fetchLoggedUserFailure('There was a problem authenticating you'));
     }
-    yield put(SessionActions.fetchLoggedUserFailure('There was a problem authenticating'));
+    yield put(SessionActions.fetchLoggedUserFailure('There was a problem'));
   }
 }
 
