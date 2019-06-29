@@ -16,17 +16,15 @@ export const Container = styled.View`
 
 export const TextInput = styled.TextInput`
   background-color: ${colors.white};
-  border-radius: ${metrics.baseRadius}px;
-  height: 60px;
-  padding: ${metrics.basePadding}px;
+  border-radius: ${metrics.baseRadius * 2}px;
+  padding: ${metrics.baseMargin}px ${metrics.basePadding}px;
   margin-top: ${metrics.baseMargin};
 `;
 
 export const SignupButton = styled.TouchableOpacity`
-  border-radius: ${metrics.baseRadius}px;
+  border-radius: ${metrics.baseRadius * 2}px;
   background-color: ${colors.primary};
-  padding: ${metrics.basePadding}px;
-  height: 60px;
+  padding: ${metrics.baseMargin}px ${metrics.basePadding}px;
   margin-top: ${metrics.baseMargin}px;
   margin-top: ${metrics.baseMargin};
   align-content: center;
@@ -69,7 +67,7 @@ export const ErrorText = styled.Text`
   color: ${colors.danger};
   letter-spacing: 0;
   text-align: center;
-  margin-top: ${metrics.baseMargin};
+  margin-top: ${metrics.baseMargin / 2}px;
   background: ${colors.white};
   border-radius: ${metrics.baseRadius * 2}px;
   padding: ${metrics.baseMargin}px;
