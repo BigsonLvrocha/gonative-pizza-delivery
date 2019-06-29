@@ -17,6 +17,10 @@ export function* createUserRequest({
     });
     navigate('Login');
   } catch (e) {
+    if (e.response && e.response.status === 400 && Array.isArray(e.response.data)) {
+      yield put(SignupSession.createUserFailure(false, e.response.data));
+      return;
+    }
     yield put(SignupSession.createUserFailure('Não foi possível criar o usuário'));
   }
 }
