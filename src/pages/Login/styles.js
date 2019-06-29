@@ -32,10 +32,11 @@ export const LoginButton = styled.TouchableOpacity`
 `;
 
 export const LoginButtonText = styled.Text`
-  font-family: Helvetica-Bold;
+  font-family: Helvetica;
   font-size: 15px;
   color: #ffffff;
   letter-spacing: 0;
+  font-weight: bold;
   text-align: center;
 `;
 
@@ -67,4 +68,7 @@ export const ErrorText = styled.Text`
   text-align: center;
   margin-top: ${metrics.baseMargin};
   font-weight: bold;
+  background: ${colors.white};
+  border-radius: ${metrics.baseRadius * 2}px;
+  padding: ${metrics.baseMargin}px;
 `;

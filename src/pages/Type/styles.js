@@ -44,10 +44,14 @@ export const ItemText = styled.Text`
 `;
 
 export const ErrorText = styled.Text`
-  font-family: Helvetica-Bold;
+  font-family: Helvetica;
   font-size: 15px;
   color: ${colors.danger};
   letter-spacing: 0;
   text-align: center;
+  font-weight: bold;
   margin-top: ${metrics.baseMargin};
+  background: ${colors.white};
+  border-radius: ${metrics.baseRadius * 2}px;
+  padding: ${metrics.baseMargin}px;
 `;

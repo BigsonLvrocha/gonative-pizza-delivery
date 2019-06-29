@@ -38,5 +38,7 @@ export const ErrorText = styled.Text`
   letter-spacing: 0;
   text-align: center;
   margin-top: ${metrics.baseMargin};
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  background: ${colors.white};
+  border-radius: ${metrics.baseRadius * 2}px;
+  padding: ${metrics.baseMargin}px;
 `;

@@ -34,7 +34,8 @@ export const SignupButton = styled.TouchableOpacity`
 `;
 
 export const SignupButtonText = styled.Text`
-  font-family: Helvetica-Bold;
+  font-family: Helvetica;
+  font-weight: bold;
   font-size: 15px;
   color: #ffffff;
   letter-spacing: 0;
@@ -53,7 +54,8 @@ export const ToLoginButton = styled.TouchableOpacity`
 `;
 
 export const ToLoginButtonText = styled.Text`
-  font-family: Helvetica-Bold;
+  font-family: Helvetica;
+  font-weight: bold;
   font-size: 15px;
   color: #ffffff;
   letter-spacing: 0;
@@ -61,10 +63,14 @@ export const ToLoginButtonText = styled.Text`
 `;
 
 export const ErrorText = styled.Text`
-  font-family: Helvetica-Bold;
+  font-family: Helvetica;
+  font-weight: bold;
   font-size: 15px;
   color: ${colors.danger};
   letter-spacing: 0;
   text-align: center;
   margin-top: ${metrics.baseMargin};
+  background: ${colors.white};
+  border-radius: ${metrics.baseRadius * 2}px;
+  padding: ${metrics.baseMargin}px;
 `;
