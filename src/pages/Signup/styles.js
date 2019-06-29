@@ -60,6 +60,15 @@ export const ToLoginButtonText = styled.Text`
   text-align: center;
 `;
 
+export const ErrorContainer = styled.View`
+  flex-direction: row;
+  justify-content: flex-start;
+`;
+
+export const ErrorFill = styled.View`
+  flex: 1;
+`;
+
 export const ErrorText = styled.Text`
   font-family: Helvetica;
   font-weight: bold;
@@ -67,8 +76,8 @@ export const ErrorText = styled.Text`
   color: ${colors.danger};
   letter-spacing: 0;
   text-align: center;
-  margin-top: ${metrics.baseMargin / 2}px;
+  margin-top: ${metrics.baseMargin / 4}px;
   background: ${colors.white};
   border-radius: ${metrics.baseRadius * 2}px;
-  padding: ${metrics.baseMargin}px;
+  padding: ${metrics.baseMargin / 4}px ${metrics.basePadding}px;
 `;

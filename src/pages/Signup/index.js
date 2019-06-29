@@ -15,7 +15,9 @@ import {
   LogoPizza,
   ToLoginButton,
   ToLoginButtonText,
+  ErrorFill,
   ErrorText,
+  ErrorContainer,
 } from './styles';
 
 class Signup extends Component {
@@ -89,7 +91,9 @@ class Signup extends Component {
       emailError,
       passwordError,
       passwordConfirmationError,
+      requiredError,
     } = this.props;
+    console.log(requiredError);
 
     return (
       <BackgroundImage source={require('../../../assets/Images/fundo.jpg')}>
@@ -98,43 +102,54 @@ class Signup extends Component {
           <TextInput
             value={username}
             onChangeText={text => this.setState({ username: text })}
-            placeholder="Seu nome completo"
+            placeholder="Seu nome completo*"
           />
           {nameError && (
-            <ErrorText>
-              {nameError.validation === 'required' ? 'Campo obrigatório' : nameError.message}
-            </ErrorText>
+            <ErrorContainer>
+              <ErrorFill />
+              <ErrorText>{nameError.message.replace('username', 'nome')}</ErrorText>
+              <ErrorFill />
+            </ErrorContainer>
           )}
           <TextInput
             value={email}
             onChangeText={text => this.setState({ email: text })}
-            placeholder="Seu e-mail"
+            placeholder="Seu e-mail*"
           />
           {emailError && (
-            <ErrorText>
-              {emailError.validation === 'required' ? 'Campo obrigatório' : emailError.message}
-            </ErrorText>
+            <ErrorContainer>
+              <ErrorFill />
+              <ErrorText>{emailError.message}</ErrorText>
+              <ErrorFill />
+            </ErrorContainer>
           )}
           <TextInput
             value={password}
             onChangeText={text => this.setState({ password: text })}
-            placeholder="Sua senha secreta"
+            placeholder="Sua senha secreta*"
             secureTextEntry
           />
           {passwordError && (
-            <ErrorText>
-              {passwordError.validation === 'required'
-                ? 'Campo obrigatório'
-                : passwordError.message}
-            </ErrorText>
+            <ErrorContainer>
+              <ErrorFill />
+              <ErrorText>{passwordError.message}</ErrorText>
+              <ErrorFill />
+            </ErrorContainer>
           )}
           <TextInput
             value={passwordConfirmation}
             onChangeText={text => this.setState({ passwordConfirmation: text })}
-            placeholder="Confirme sua senha"
+            placeholder="Confirme sua senha*"
             secureTextEntry
           />
-          {passwordConfirmationError && <ErrorText>A confirmação não está igual</ErrorText>}
+          {passwordConfirmationError && <ErrorText>As senha são diferentes</ErrorText>}
+          {!!requiredError && (
+            <ErrorContainer>
+              <ErrorFill />
+              <ErrorText>* Campos obrigatórios</ErrorText>
+              <ErrorFill />
+            </ErrorContainer>
+          )}
           {!!error && <ErrorText>{error}</ErrorText>}
           <SignupButton onPress={this.handleSignupButtonPress}>
             {isLoading ? (
@@ -155,14 +170,21 @@ class Signup extends Component {
 const mapStateToProps = state => ({
   error: state.signup.error,
   isLoading: state.signup.isLoading,
-  nameError: state.signup.fieldError.find(item => item.field === 'username'),
-  emailError: state.signup.fieldError.find(item => item.field === 'email'),
+  nameError: state.signup.fieldError.find(
+    item => item.field === 'username' && item.validation !== 'required',
+  ),
+  emailError: state.signup.fieldError.find(
+    item => item.field === 'email' && item.validation !== 'required',
+  ),
   passwordError: state.signup.fieldError.find(
-    item => item.field === 'password' && item.validation !== 'confirmed',
+    item => item.field === 'password'
+      && item.validation !== 'confirmed'
+      && item.validation !== 'required',
   ),
   passwordConfirmationError: state.signup.fieldError.find(
     item => item.field === 'password' && item.validation === 'confirmed',
   ),
+  requiredError: !!state.signup.fieldError.find(item => item.validation === 'required'),
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(SignupActions, dispatch);
