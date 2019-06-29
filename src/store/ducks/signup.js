@@ -10,6 +10,7 @@ export const Types = {
 const INITIAL_STATE = {
   isLoading: false,
   error: false,
+  fieldError: [],
 };
 
 export default function (state = INITIAL_STATE, { type, payload }) {
@@ -24,17 +25,20 @@ export default function (state = INITIAL_STATE, { type, payload }) {
         ...state,
         isLoading: false,
         error: false,
+        fieldError: [],
       };
     case Types.CREATE_USER_FAILURE:
       return {
         ...state,
         isLoading: false,
         error: payload.error,
+        fieldError: payload.fieldError,
       };
     case Types.SIGNUP_CLEAR_ERRORS:
       return {
         ...state,
         error: false,
+        fieldError: [],
       };
     default:
       return state;
@@ -55,10 +59,11 @@ export const Creators = {
   createUserSuccess: () => ({
     type: Types.CREATE_USER_SUCCESS,
   }),
-  createUserFailure: error => ({
+  createUserFailure: (error, fieldError = []) => ({
     type: Types.CREATE_USER_FAILURE,
     payload: {
       error,
+      fieldError,
     },
   }),
   clearSignupError: () => ({
