@@ -41,7 +41,7 @@ class Signup extends Component {
     error: false,
   };
 
-  componentDidMount() {
+  componentWillUnmount() {
     const { clearSignupError } = this.props;
     clearSignupError();
   }

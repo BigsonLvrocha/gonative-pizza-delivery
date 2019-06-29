@@ -37,7 +37,7 @@ class Login extends Component {
     error: false,
   };
 
-  componentDidMount() {
+  componentWillUnmount() {
     const { clearSessionErrors } = this.props;
     clearSessionErrors();
   }
