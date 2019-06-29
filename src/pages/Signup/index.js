@@ -52,6 +52,7 @@ class Signup extends Component {
     passwordConfirmationError: PropTypes.shape({
       message: PropTypes.string.isRequired,
     }),
+    requiredError: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -93,8 +94,6 @@ class Signup extends Component {
       passwordConfirmationError,
       requiredError,
     } = this.props;
-    console.log(requiredError);
-
     return (
       <BackgroundImage source={require('../../../assets/Images/fundo.jpg')}>
         <Container>
