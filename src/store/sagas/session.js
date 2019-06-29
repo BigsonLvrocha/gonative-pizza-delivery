@@ -22,6 +22,7 @@ export function* fetchLoggedUser(token) {
       yield call(AsyncStorage.removeItem, 'pizzaria/token');
       yield put(SessionActions.fetchLoggedUserFailure('There was a problem authenticating'));
     }
+    yield put(SessionActions.fetchLoggedUserFailure('There was a problem authenticating'));
   }
 }
 

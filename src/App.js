@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setNavigator } from '~/services/navigation';
 import PropTypes from 'prop-types';
+import Loading from './pages/Loading';
 import createNavigator from './routes';
 import { bindActionCreators } from 'redux';
 import { Creators as SessionActions } from '~/store/ducks/session';
@@ -21,7 +22,7 @@ class App extends Component {
   render() {
     const { userChecked, userLogged } = this.props;
     if (!userChecked) {
-      return null;
+      return <Loading />;
     }
     const Routes = createNavigator(userLogged);
     return <Routes ref={setNavigator} />;

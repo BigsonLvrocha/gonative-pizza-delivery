@@ -51,18 +51,20 @@ export const CreateAccountButton = styled.TouchableOpacity`
 `;
 
 export const CreateAccountButtonText = styled.Text`
-  font-family: Helvetica-Bold;
+  font-family: Helvetica;
   font-size: 15px;
   color: #ffffff;
   letter-spacing: 0;
   text-align: center;
+  font-weight: bold;
 `;
 
 export const ErrorText = styled.Text`
-  font-family: Helvetica-Bold;
+  font-family: Helvetica;
   font-size: 15px;
   color: ${colors.danger};
   letter-spacing: 0;
   text-align: center;
   margin-top: ${metrics.baseMargin};
+  font-weight: bold;
 `;
